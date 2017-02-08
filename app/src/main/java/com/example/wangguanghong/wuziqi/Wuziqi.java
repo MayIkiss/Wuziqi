@@ -22,6 +22,11 @@ import java.util.List;
  */
 
 public class Wuziqi extends View {
+    private static final String INSTANCE="instance";
+    private static final String INSTANCE_GAME_OVER="game_over";
+    private static final String INSTANCE_WHITEARRAY="white_array";
+    private static final String INSTANCE_BLACKARRAY="black_array";
+    private static final String INSTANCE_ISWHITE="is_white";
     private int mPanelWidth;
     private float mLineHeight;
     private int MAX_LINE=10;
@@ -35,11 +40,6 @@ public class Wuziqi extends View {
     private ArrayList<Point> mBlackArray=new ArrayList<>();
     private boolean mIsGameOver;
     private boolean mIsWhiteWinner;
-    private static final String INSTANCE="instance";
-    private static final String INSTANCE_GAME_OVER="game_over";
-    private static final String INSTANCE_WHITEARRAY="white_array";
-    private static final String INSTANCE_BLACKARRAY="black_array";
-    private static final String INSTANCE_ISWHITE="is_white";
 
     public Wuziqi(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -309,12 +309,29 @@ public class Wuziqi extends View {
         super.onRestoreInstanceState(state);
     }
 
+    //重新开始
     public void restart(){
         mBlackArray.clear();
         mWhiteArray.clear();
         mIsGameOver=false;
         mIsWhite=true;
         mIsWhiteWinner=false;
+        invalidate();
+    }
+
+    //悔棋
+    public void back(){
+        if(mIsGameOver){
+            return;
+        }
+        if(mIsWhite&&mBlackArray.size()>0){
+            mBlackArray.remove(mBlackArray.size()-1);
+        }else if(!mIsWhite&&mWhiteArray.size()>0){
+            mWhiteArray.remove(mWhiteArray.size()-1);
+        }else {
+            return;
+        }
+        mIsWhite=!mIsWhite;
         invalidate();
     }
 }

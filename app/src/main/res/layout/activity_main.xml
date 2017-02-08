@@ -5,8 +5,8 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@drawable/bg"
+    android:gravity="center"
     tools:context="com.example.wangguanghong.wuziqi.MainActivity">
     <!--<Button-->
         <!--android:id="@+id/restart"-->
