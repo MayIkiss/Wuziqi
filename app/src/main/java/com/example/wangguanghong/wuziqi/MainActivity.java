@@ -9,11 +9,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Wuziqi mWuziqi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mWuziqi= (Wuziqi) findViewById(R.id.wuziqi);
+        mWuziqi = (Wuziqi) findViewById(R.id.wuziqi);
     }
 
     @Override
@@ -25,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
-            case R.id.restart:
-                mWuziqi.restart();
-                break;
-            case R.id.back:
-                mWuziqi.back();
-                break;
+        if (id == R.id.restart) {
+            mWuziqi.restart();
+            return true;
+        } else if (id == R.id.back) {
+            mWuziqi.back();
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

@@ -43,7 +43,6 @@ public class Wuziqi extends View {
 
     public Wuziqi(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setBackgroundColor(0x44ff0000);
         init();
     }
 
